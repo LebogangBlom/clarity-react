@@ -1,5 +1,5 @@
 /* Reuse existing css/styles.css but provide a local copy to import into Vite/React */
-@import url('../css/styles.css');
+@import url('../public/css/styles.css');
 
 /* Small helper to ensure container class exists for layout inside React */
 .container{
