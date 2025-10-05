@@ -74,6 +74,32 @@
   background: #0b67ff; color: #fff; border: 0; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight:600;
 }
 .validation-modal button.ok-btn:hover { filter:brightness(0.95) }
+
+/* Media queries for small screens */
+@media (max-width: 600px) {
+  .validation-modal {
+    max-width: 80vw;
+    width: 80vw;
+    padding: 20px 10px;
+    border-radius: 7px;
+    font-size: 0.98rem;
+  }
+  .validation-modal h3 {
+    font-size: 1rem;
+  }
+  .validation-modal .modal-top {
+    gap: 8px;
+  }
+  .validation-modal button,
+  .validation-modal button.ok-btn {
+    padding: 7px 10px;
+    font-size: 0.97rem;
+  }
+  .validation-modal ul {
+    padding-left: 12px;
+    margin: 6px 0 10px;
+  }
+}
 .validation-modal button.ok-btn:focus { outline: 3px solid rgba(11,103,255,0.18); }
 
 /* inline form message styling */

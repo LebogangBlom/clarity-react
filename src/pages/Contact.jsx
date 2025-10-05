@@ -143,7 +143,7 @@ export default function Contact(){
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/thank-you"
+          action="/ThankYou"
           className="cly-contact-form"
           id="contactForm"
           noValidate
