@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest"
+  "dev": "vite",
+  "build": "vite build",
+  "postbuild": "node ./scripts/copy-redirects.js",
+  "preview": "vite preview",
+  "test": "vitest"
   },
   "dependencies": {
     "react": "18.2.0",
