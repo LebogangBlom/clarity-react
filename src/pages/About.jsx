@@ -3,7 +3,6 @@ import React from 'react'
 export default function About(){
   return (
     <>
-
       <section className="cly-about-us-container">
         <div className="cly-about-us-div">
           <h2>About Us</h2>

@@ -78,10 +78,9 @@ export default function Header(){
         onClick={() => setOpen(false)}
         aria-hidden={!open}
       />
-
       <nav className="cly-nav" aria-label="Main navigation">
         {/* Mobile sliding panel */}
-        <div className={"cly-mobile-panel" + (open ? ' open' : '')} role="dialog" aria-modal="true">
+        <div className={"cly-mobile-panel" + (open ? ' open' : '')} role="dialog" aria-modal="true" aria-hidden={!open}>
           <ul id="primary-navigation" className={"cly-nav-list"}>
             <li><Link ref={firstLinkRef} to="/" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>HOME</Link></li>
             <li><Link to="/services" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>SERVICES</Link></li>

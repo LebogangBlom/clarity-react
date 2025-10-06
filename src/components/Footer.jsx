@@ -11,7 +11,7 @@ export default function Footer(){
           </Link>
         </div>
         <div className="cly-footer-socials">
-          <a href="https://www.linkedin.com/company/clarity" className="cly-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.linkedin.com/company/clarit" className="cly-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
       <p className="cly-footer-text">&copy; <span id="current-year"></span> clarity. All rights reserved.</p>
