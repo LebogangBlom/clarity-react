@@ -11,25 +11,27 @@ export default function Services(){
       </section>
 
       <section className="cly-services">
-        <div className="cly-container-services-flex">
-          <div className="cly-services-card">
-            <h3>Web Development</h3>
-            <p>We build scalable and robust Front-End websites tailored to your startup's unique needs, using the latest technologies and best practices.</p>
-          </div>
-          <div className="cly-services-card">
-            <h3>Product Strategy</h3>
-            <p>We work closely with you to define a clear product vision and roadmap, ensuring your digital solution aligns with your business goals.</p>
-          </div>
-          <div className="cly-services-card">
-            <h3>Brand Strategy</h3>
-            <p>We work with you to craft a compelling brand identity that resonates with your target audience and sets you apart in the market.</p>
-          </div>
-          <div className="cly-services-card">
-            <h3>Data Strategy</h3>
-            <p>We help you leverage data to make informed decisions, optimize performance, and gain insights into user behavior.</p>
-          </div>
-        </div>
-      </section>
+            <div className="cly-services-grid">
+               <div className="cly-services-grid">
+                    <div className="cly-service-card">
+                        <h3>CX Audits & Consulting</h3>
+                        <p>Our CX Audits & Consulting service helps you evaluate your customer experience across all touchpoints. We identify gaps, optimize processes, and provide actionable insights to enhance customer satisfaction, loyalty, and retention.</p>
+                    </div>
+                    <div className="cly-service-card">
+                        <h3>Content Marketing</h3>
+                        <p>Engage and educate your audience with our targeted content marketing strategies. From blog posts to video content, we craft compelling messages that drive traffic, build brand awareness, and convert leads into loyal customers.</p>
+                    </div>
+                    <div className="cly-service-card">
+                        <h3>Experience Design (UX/UI)</h3>
+                        <p>Optimize your digital interfaces with our Experience Design services. We focus on creating intuitive, user-centered designs for websites and apps, ensuring a seamless experience that enhances customer satisfaction and engagement.</p>
+                    </div>
+                    <div className="cly-service-card">
+                        <h3>Experience Innovation</h3>
+                        <p>Stay ahead of the curve with Experience Innovation. We help you redefine customer experiences using emerging technologies, creative strategies, and data-driven insights to deliver cutting-edge solutions that resonate with your customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </>
   )
 }

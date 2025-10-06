@@ -13,7 +13,7 @@ return (
             </div>
             <div className="cly-hero-content">
                 <h1>From Idea to Impact. We Make It Happen</h1>
-                <p>We build fast, scalable websites for startups ready to grow. Our team blends sharp design with smart strategy to launch digital products that perform.</p>
+                <p>We help brands design, optimize, and innovate every customer interaction — turning complexity into simplicity, and touchpoints into lasting impressions.</p>
                 <a href="/about" className="cly-hero-button"> Learn more</a>
             </div>
         </section>
@@ -29,31 +29,31 @@ return (
                 </div>
                 <div className="cly-about-us-content">
                     <h2>About Us</h2>
-                    <p>We are a passionate team dedicated to turning innovative ideas into powerful digital solutions. We specialize in building cutting-edge Front-End websites for startups, helping you grow from a concept into a competitive product.</p>
+                    <p>We believe exceptional customer experiences are the key to business growth. We're a customer experience consultancy dedicated to helping brands build deeper connections with their audiences through strategic insights, innovative design, and meaningful engagement.</p>
                     <a href="/about" className="cly-about-us-btn">Learn More</a>
                 </div>
             </div>
         </section>
 
         <section className="cly-services">
-            <div className="container">
-                <h2>Services</h2>
-                <div className="cly-services-grid">
+            <h2>Services</h2>
+            <div className="cly-services-grid">
+               <div className="cly-services-grid">
                     <div className="cly-service-card">
-                        <h3>Web</h3>
-                        <p>Building front-end responsive and scalable websites from scratch.</p>
+                        <h3>CX Audits & Consulting</h3>
+                        <p>Our CX Audits & Consulting service helps you evaluate your customer experience across all touchpoints. We identify gaps, optimize processes, and provide actionable insights to enhance customer satisfaction, loyalty, and retention.</p>
                     </div>
                     <div className="cly-service-card">
-                        <h3>Product</h3>
-                        <p>Defining your product's vision, roadmap, and core features for market success.</p>
+                        <h3>Content Marketing</h3>
+                        <p>Engage and educate your audience with our targeted content marketing strategies. From blog posts to video content, we craft compelling messages that drive traffic, build brand awareness, and convert leads into loyal customers.</p>
                     </div>
                     <div className="cly-service-card">
-                        <h3>Brand</h3>
-                        <p>Crafting a compelling brand identity that resonates with your target audience.</p>
+                        <h3>Experience Design (UX/UI)</h3>
+                        <p>Optimize your digital interfaces with our Experience Design services. We focus on creating intuitive, user-centered designs for websites and apps, ensuring a seamless experience that enhances customer satisfaction and engagement.</p>
                     </div>
                     <div className="cly-service-card">
-                        <h3>Data</h3>
-                        <p>Unlocking insights from your data to drive business growth.</p>
+                        <h3>Experience Innovation</h3>
+                        <p>Stay ahead of the curve with Experience Innovation. We help you redefine customer experiences using emerging technologies, creative strategies, and data-driven insights to deliver cutting-edge solutions that resonate with your customers.</p>
                     </div>
                 </div>
             </div>
@@ -64,19 +64,19 @@ return (
             <div className="cly-values-grid">
                 <div className="cly-value-card">
                     <h3>Innovation</h3>
-                    <p>We are dedicated to staying at the forefront of technology, creating forward-thinking solutions that drive your business forward and set you apart from the competition.</p>
+                    <p>Staying ahead of the curve with forward-thinking solutions that leverage emerging technologies to drive business growth and differentiation.</p>
                 </div>
                 <div className="cly-value-card">
                     <h3>Collaboration</h3>
-                    <p>We believe the best results come from working together. We partner with our clients every step of the way, ensuring transparency and building solutions that truly meet your needs.</p>
+                    <p>Delivering results through close partnership, transparent communication, and co-creation that ensures every solution aligns with real business needs.</p>
                 </div>
                 <div className="cly-value-card">
                     <h3>Integrity</h3>
-                    <p>Our commitment to honesty and ethical practice is non-negotiable. We build trust by delivering on our promises and operating with full transparency in all our projects.</p>
+                    <p>Upholding honesty and accountability in every engagement, building trust through consistent delivery and ethical practices.</p>
                 </div>
                 <div className="cly-value-card">
                     <h3>Excellence</h3>
-                    <p>We are passionate about our craft. We strive for excellence in every line of code, ensuring that our solutions are not only functional but also robust, efficient, and of the highest quality.</p>
+                    <p>Raising the bar with meticulous attention to detail, delivering solutions that are not only reliable and efficient but also crafted to the highest standards.</p>
                 </div>
             </div>
         </section>
@@ -85,7 +85,7 @@ return (
             <div className="container cly-contact-flex">
                 <div className="cly-about-us-content">
                     <h2>Contact Us</h2>
-                    <p>Whether you're a startup looking to build your first product or an established business seeking to innovate, We are here to help. Reach out to us today to discuss your project and discover how we can partner with you on your journey to success.</p>
+                    <p>Ready to take your customer experience to the next level? Reach out to start a conversation — no pressure, just possibilities.</p>
                     <a href="/contact" className="cly-contact-btn">Get in Touch</a>
                 </div>
                 <div className="cly-contact-image">
