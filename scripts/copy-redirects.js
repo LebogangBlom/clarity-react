@@ -23,3 +23,30 @@ try {
 } catch (err) {
   console.warn('Could not create 200.html fallback', err.message)
 }
+
+// Copy images folder into dist so static images are available on Netlify
+const imagesSrc = path.resolve(__dirname, '..', 'images')
+const imagesDest = path.join(destDir, 'images')
+try {
+  if (fs.existsSync(imagesSrc)) {
+    // Use recursive copy
+    if (fs.cpSync) {
+      fs.cpSync(imagesSrc, imagesDest, { recursive: true })
+    } else {
+      // fallback: copy files one by one
+      const copyRecursive = (src, dest) => {
+        if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
+        for (const name of fs.readdirSync(src)) {
+          const s = path.join(src, name)
+          const d = path.join(dest, name)
+          if (fs.lstatSync(s).isDirectory()) copyRecursive(s, d)
+          else fs.copyFileSync(s, d)
+        }
+      }
+      copyRecursive(imagesSrc, imagesDest)
+    }
+    console.log('Copied images/ to dist/images/')
+  }
+} catch (err) {
+  console.warn('Could not copy images folder', err.message)
+}
