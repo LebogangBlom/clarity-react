@@ -8,11 +8,10 @@
 [functions]
   directory = "netlify/functions"
 
-[headers]
-  [[headers.for]]
+[[headers]]
   for = "/*"
   [headers.values]
-  X-Frame-Options = "DENY"
+    X-Frame-Options = "DENY"
 
 [[redirects]]
   from = "/*"
