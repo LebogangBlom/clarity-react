@@ -37,3 +37,9 @@ npm test
 Contact function
 
 - A placeholder Netlify Function is included at `netlify/functions/contact.js` to receive JSON POSTs. Implement your processing logic there.
+
+Netlify reCAPTCHA notes / troubleshooting
+
+- Netlify injects the reCAPTCHA widget on the deployed site only when you enable reCAPTCHA in the Netlify site settings and the site is served from Netlify. You will not see the Netlify-injected CAPTCHA when serving locally via `vite`.
+- To test reCAPTCHA locally you can add the Google reCAPTCHA script and a test site key to `index.html` temporarily (not recommended for production). Generally it's easiest to test reCAPTCHA on a deployed Netlify preview or production site.
+- Make sure you enable reCAPTCHA in Site settings → Forms → reCAPTCHA on Netlify and follow Netlify docs to configure your site keys.
