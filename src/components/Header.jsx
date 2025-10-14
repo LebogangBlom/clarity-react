@@ -85,7 +85,9 @@ export default function Header(){
             <li><Link ref={firstLinkRef} to="/" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>HOME</Link></li>
             <li><Link to="/services" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>SERVICES</Link></li>
             <li><Link to="/about" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>ABOUT US</Link></li>
-            <li><Link ref={lastLinkRef} to="/contact" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>CONTACT</Link></li>
+            <li><Link to="/contact" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>CONTACT</Link></li>
+            <li><Link to="/client-login" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>CLIENT</Link></li>
+            <li><Link ref={lastLinkRef} to="/admin-login" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>ADMIN</Link></li>
           </ul>
         </div>
 
@@ -96,6 +98,8 @@ export default function Header(){
           <li><Link to="/services" className="cly-nav-link" onClick={handleLinkClick}>SERVICES</Link></li>
           <li><Link to="/about" className="cly-nav-link" onClick={handleLinkClick}>ABOUT US</Link></li>
           <li><Link to="/contact" className="cly-nav-link" onClick={handleLinkClick}>CONTACT</Link></li>
+          <li><Link to="/client-login" className="cly-nav-link" onClick={handleLinkClick}>CLIENT</Link></li>
+          <li><Link to="/admin-login" className="cly-nav-link" onClick={handleLinkClick}>ADMIN</Link></li>
         </ul>
       </nav>
     </header>
