@@ -22,12 +22,12 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="login-container">
-            <div className="login-form">
+        <div className="cly-login-container">
+            <div className="cly-login-form">
                 <h2>Admin Login</h2>
-                {error && <p className="error-message">{error}</p>}
+                {error && <p className="cly-error-message">{error}</p>}
                 <form onSubmit={handleLogin}>
-                    <div className="form-group">
+                    <div className="cly-form-group">
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
@@ -38,7 +38,7 @@ const AdminLogin = () => {
                             required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="cly-form-group">
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -49,7 +49,7 @@ const AdminLogin = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Login</button>
+                    <button type="submit" className="cly-btn cly-btn-primary">Login</button>
                 </form>
             </div>
         </div>
