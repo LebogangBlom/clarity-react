@@ -48,12 +48,12 @@ const ClientLogin = () => {
     };
 
     return (
-        <div className="cly-login-container">
-            <div className="cly-login-form">
+        <div className="login-container">
+            <div className="login-form">
                 <h2>Client Login</h2>
-                {error && <p className="cly-error-message">{error}</p>}
+                {error && <p className="error-message">{error}</p>}
                 <form onSubmit={handleSubmit}>
-                    <div className="cly-form-group">
+                    <div className="form-group">
                         <label htmlFor="loginIdentifier">Email or Unique Number</label>
                         <input
                             type="text"
@@ -63,7 +63,7 @@ const ClientLogin = () => {
                             required
                         />
                     </div>
-                    <div className="cly-form-group">
+                    <div className="form-group">
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -73,14 +73,14 @@ const ClientLogin = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className="cly-btn cly-btn-primary" disabled={loading}>
+                    <button type="submit" className="btn btn-primary" disabled={loading}>
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
-                <p className="cly-toggle-form">
+                <p className="toggle-form">
                     Don't have an account? <Link to="/register">Register</Link>
                 </p>
-                <p className="cly-toggle-form">
+                <p className="toggle-form">
                     <Link to="/forgot-password">Forgot Password?</Link>
                 </p>
             </div>

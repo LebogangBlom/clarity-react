@@ -112,17 +112,17 @@ const Register = () => {
                         <div className="form-group">
                             <label>First Name</label>
                             <input type="text" name="firstName" onChange={handleChange} />
-                            {errors.firstName && <p className="error-text">{errors.firstName}</p>}
+                            {errors.firstName && <p className="error-message">{errors.firstName}</p>}
                         </div>
                         <div className="form-group">
                             <label>Last Name</label>
                             <input type="text" name="lastName" onChange={handleChange} />
-                            {errors.lastName && <p className="error-text">{errors.lastName}</p>}
+                            {errors.lastName && <p className="error-message">{errors.lastName}</p>}
                         </div>
                         <div className="form-group">
                             <label>Email</label>
                             <input type="email" name="email" onChange={handleChange} />
-                            {errors.email && <p className="error-text">{errors.email}</p>}
+                            {errors.email && <p className="error-message">{errors.email}</p>}
                         </div>
                         <div className="form-group">
                             <label>Password</label>
@@ -134,17 +134,17 @@ const Register = () => {
                                 onBlur={() => setIsPasswordFocused(false)}
                             />
                             <PasswordStrengthValidator password={formData.password} isVisible={isPasswordFocused} />
-                            {errors.password && <p className="error-text">{errors.password}</p>}
+                            {errors.password && <p className="error-message">{errors.password}</p>}
                         </div>
                         <div className="form-group">
                             <label>Confirm Password</label>
                             <input type="password" name="confirmPassword" onChange={handleChange} />
-                            {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
+                            {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
                         </div>
                         <div className="form-group">
                             <label>Business Name</label>
                             <input type="text" name="businessName" onChange={handleChange} />
-                            {errors.businessName && <p className="error-text">{errors.businessName}</p>}
+                            {errors.businessName && <p className="error-message">{errors.businessName}</p>}
                         </div>
                         <div className="form-group">
                             <label>Business Type</label>
