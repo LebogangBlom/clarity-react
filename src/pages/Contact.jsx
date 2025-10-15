@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal';
-import Loader from '../components/Loader';
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { app } from '../firebase/config';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -11,60 +10,90 @@ const Contact = () => {
         message: ''
     });
     const [errors, setErrors] = useState({});
-    const [modal, setModal] = useState({ message: null, type: null });
-    const [loading, setLoading] = useState(false);
-    const db = getFirestore(app);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
-    const validateForm = () => {
+    const validate = () => {
         const newErrors = {};
-        if (!formData.name.trim()) newErrors.name = 'Name is required.';
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required.';
+        if (!formData.name) newErrors.name = 'Name is required';
+        if (!formData.email) {
+            newErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid.';
+            newErrors.email = 'Email is invalid';
         }
-        if (!formData.message.trim()) newErrors.message = 'Message is required.';
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+        if (!formData.message) newErrors.message = 'Message is required';
+        return newErrors;
     };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    };
 
-        setLoading(true);
-        try {
-            await addDoc(collection(db, "contacts"), {
-                ...formData,
-                createdAt: new Date()
-            });
-            setModal({ message: 'Your message has been sent successfully!', type: 'success' });
-            setFormData({ name: '', email: '', message: '' });
-        } catch (error) {
-            setModal({ message: 'Failed to send message. Please try again later.', type: 'error' });
-        } finally {
-            setLoading(false);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newErrors = validate();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            setIsModalOpen(true);
+        } else {
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode({
+                    "form-name": "contact",
+                    ...formData
+                })
+            })
+            .then(() => navigate("/thank-you"))
+            .catch(error => alert(error));
         }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
         <>
-            {loading && <Loader />}
-            <Modal 
-                message={modal.message} 
-                onClose={() => setModal({ message: null, type: null })} 
-                type={modal.type} 
-            />
-            <div className="contact-container">
-                <div className="contact-form">
-                    <h2>Contact Us</h2>
-                    <p>Have a question or want to work with us? Fill out the form below and we'll get back to you as soon as possible.</p>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
+            <Helmet>
+                <title>Contact Us - Clarity</title>
+                <meta name="description" content="Get in touch with the Clarity team. We're here to help you with any questions you may have." />
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            </Helmet>
+            <section className="cly-contact-hero">
+                <div className="cly-contact-hero-image">
+                    <img src="/images/contact-hero.jpg" alt="Contact Us" />
+                </div>
+                <div className="cly-contact-content">
+                    <h1>Contact Us</h1>
+                    <p>We'd love to hear from you. Please fill out the form below to get in touch.</p>
+                </div>
+            </section>
+            <section className="cly-contact-section">
+                <div className="cly-contact-info">
+                    <h2>Our Information</h2>
+                    <p>You can also reach us through the following channels:</p>
+                    <ul>
+                        <li><i className="fas fa-envelope"></i> <a href="mailto:contact@clarity.com">contact@clarity.com</a></li>
+                        <li><i className="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i className="fas fa-map-marker-alt"></i> 123 Clarity St, Suite 100, San Francisco, CA 94102</li>
+                    </ul>
+                </div>
+                <div className="cly-contact-form-container">
+                    <h2>Send a Message</h2>
+                    <form
+                        name="contact"
+                        method="POST"
+                        onSubmit={handleSubmit}
+                    >
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div className="cly-form-group">
                             <label htmlFor="name">Name</label>
                             <input
                                 type="text"
@@ -73,9 +102,8 @@ const Contact = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                             />
-                            {errors.name && <p className="error-text">{errors.name}</p>}
                         </div>
-                        <div className="form-group">
+                        <div className="cly-form-group">
                             <label htmlFor="email">Email</label>
                             <input
                                 type="email"
@@ -84,9 +112,8 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                             />
-                            {errors.email && <p className="error-text">{errors.email}</p>}
                         </div>
-                        <div className="form-group">
+                        <div className="cly-form-group">
                             <label htmlFor="message">Message</label>
                             <textarea
                                 id="message"
@@ -95,14 +122,22 @@ const Contact = () => {
                                 value={formData.message}
                                 onChange={handleChange}
                             ></textarea>
-                            {errors.message && <p className="error-text">{errors.message}</p>}
                         </div>
-                        <button type="submit" className="btn btn-primary" disabled={loading}>
-                            Send Message
-                        </button>
+                        <div className="cly-form-group">
+                            <div data-netlify-recaptcha="true"></div>
+                        </div>
+                        <button type="submit" className="cly-form-btn">Send Message</button>
                     </form>
                 </div>
-            </div>
+            </section>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <h2>Form Errors</h2>
+                <ul>
+                    {Object.values(errors).map((error, index) => (
+                        <li key={index}>{error}</li>
+                    ))}
+                </ul>
+            </Modal>
         </>
     );
 };

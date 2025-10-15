@@ -46,11 +46,6 @@ export default function Header(){
     return ()=>document.removeEventListener('keydown', handleTab)
   },[open])
 
-  function handleLinkClick(){
-    // close the mobile nav when a link is clicked
-    setOpen(false)
-  }
-
   return (
     <header className="cly-header">
       <div className="cly-logo">
@@ -82,24 +77,23 @@ export default function Header(){
         {/* Mobile sliding panel */}
         <div className={"cly-mobile-panel" + (open ? ' open' : '')} role="dialog" aria-modal="true" aria-hidden={!open}>
           <ul id="primary-navigation" className={"cly-nav-list"}>
-            <li><Link ref={firstLinkRef} to="/" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>HOME</Link></li>
-            <li><Link to="/services" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>SERVICES</Link></li>
-            <li><Link to="/about" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>ABOUT US</Link></li>
-            <li><Link to="/contact" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>CONTACT</Link></li>
-            <li><Link to="/client-login" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>CLIENT</Link></li>
-            <li><Link ref={lastLinkRef} to="/admin-login" className="cly-nav-link cly-tap-target" onClick={handleLinkClick}>ADMIN</Link></li>
+            <li><Link ref={firstLinkRef} to="/" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>HOME</Link></li>
+            <li><Link to="/services" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>SERVICES</Link></li>
+            <li><Link to="/about" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>ABOUT US</Link></li>
+            <li><Link to="/contact" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>CONTACT</Link></li>
+            <li><Link to="/client-login" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>CLIENT</Link></li>
+            <li><Link ref={lastLinkRef} to="/admin-login" className="cly-nav-link cly-tap-target" onClick={() => setOpen(false)}>ADMIN</Link></li>
           </ul>
         </div>
 
         {/* Desktop nav (visible on larger screens) */}
         <ul className="cly-nav-list cly-desktop-nav">
-          {/* Add onClick handler for consistency across all links */}
-          <li><Link to="/" className="cly-nav-link" onClick={handleLinkClick}>HOME</Link></li>
-          <li><Link to="/services" className="cly-nav-link" onClick={handleLinkClick}>SERVICES</Link></li>
-          <li><Link to="/about" className="cly-nav-link" onClick={handleLinkClick}>ABOUT US</Link></li>
-          <li><Link to="/contact" className="cly-nav-link" onClick={handleLinkClick}>CONTACT</Link></li>
-          <li><Link to="/client-login" className="cly-nav-link" onClick={handleLinkClick}>CLIENT</Link></li>
-          <li><Link to="/admin-login" className="cly-nav-link" onClick={handleLinkClick}>ADMIN</Link></li>
+          <li><Link to="/" className="cly-nav-link">HOME</Link></li>
+          <li><Link to="/services" className="cly-nav-link">SERVICES</Link></li>
+          <li><Link to="/about" className="cly-nav-link">ABOUT US</Link></li>
+          <li><Link to="/contact" className="cly-nav-link">CONTACT</Link></li>
+          <li><Link to="/client-login" className="cly-nav-link">CLIENT</Link></li>
+          <li><Link to="/admin-login" className="cly-nav-link">ADMIN</Link></li>
         </ul>
       </nav>
     </header>

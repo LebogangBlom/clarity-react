@@ -1,4 +1,4 @@
-.modal-overlay {
+.cly-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,25 +11,21 @@
     z-index: 1000;
 }
 
-.modal-content {
+.cly-modal-content {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
 }
 
-.modal-content.success {
-    border-left: 5px solid #4CAF50;
-}
-
-.modal-content.error {
-    border-left: 5px solid #f44336;
-}
-
-.modal-content p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+.cly-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }

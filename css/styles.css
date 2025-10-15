@@ -63,22 +63,18 @@ body {
     width: 100px;
 }
 
-/* Ensure mobile sliding panel and backdrop are hidden on larger screens */
 .cly-mobile-panel,
 .cly-backdrop {
     display: none;
 }
 
-/* Prevent body scrolling when mobile panel is open */
 .cly-scroll-lock {
     overflow: hidden;
     touch-action: none;
 }
 
-.cly-nav-list,
-.cly-nav ul {
+.cly-nav-list {
     display: flex;
-    flex-direction: row;
     list-style: none;
     margin: 0 100px 0 0;
     padding: 0;
@@ -100,7 +96,6 @@ body {
     padding: 10px 15px;
 }
 
-/* Hamburger menu */
 .cly-hamburger {
     display: none;
     background: none;
@@ -169,21 +164,18 @@ body {
         padding: 5px 20px;
     }
 
-    /* enable mobile panel/backdrop on small screens */
     .cly-mobile-panel,
     .cly-backdrop {
         display: block;
     }
 
-    /* Hide desktop nav list and show a desktop-only variant only on larger screens */
     .cly-desktop-nav {
         display: none !important;
     }
 
-    /* Mobile sliding panel - initially hidden off-canvas to the right */
     .cly-mobile-panel {
         position: fixed;
-        right: -320px; /* off-screen */
+        right: -320px; 
         top: 0;
         height: 100vh;
         width: 100%;
@@ -192,14 +184,14 @@ body {
         box-shadow: -8px 0 24px rgba(0,0,0,0.15);
         transition: right 300ms cubic-bezier(.2,.8,.2,1);
         z-index: 180;
-        padding-top: 70px; /* space for header */
+        padding-top: 70px; 
         display: flex;
         flex-direction: column;
         align-items: stretch;
     }
 
     .cly-mobile-panel.open {
-        right: 0; /* slide in */
+        right: 0;
     }
 
     .cly-backdrop {
@@ -217,7 +209,6 @@ body {
         pointer-events: auto;
     }
 
-    /* Mobile nav list inside the sliding panel */
     .cly-mobile-panel .cly-nav-list {
         display: flex;
         flex-direction: column;
@@ -228,7 +219,6 @@ body {
         list-style: none;
     }
 
-    /* Bigger tap targets for mobile links */
     .cly-mobile-panel .cly-nav-link.cly-tap-target {
         padding: 18px 28px;
         width: 100%;
@@ -236,7 +226,6 @@ body {
         box-sizing: border-box;
     }
 
-    /* reveal animation for menu items */
     .cly-mobile-panel .cly-nav-list li {
         opacity: 0;
         transform: translateY(-6px);
@@ -259,19 +248,8 @@ body {
         font-size: 1.05rem;
     }
 
-    .cly-nav ul li {
-        margin: 0.75rem 0;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.063);
-    }
-
-    .cly-nav-link {
-        padding: 10px 0;
-        font-size: large;
-    }
-
     .cly-hamburger {
         display: block;
-        /* position it at the right edge of the header for small screens */
         position: absolute;
         right: 20px;
         top: 50%;
@@ -367,7 +345,6 @@ body {
 
     .cly-hero-content h1 {
         font-size: 2rem;
-        word-spacing: normal;
     }
 
     .cly-hero-content p {
@@ -388,7 +365,6 @@ body {
 
     .cly-hero-content h1 {
         font-size: 2rem;
-        word-spacing: normal;
     }
 
     .cly-hero-content p {
@@ -399,7 +375,6 @@ body {
 @media (max-width: 480px) {
     .cly-hero-content h1 {
         font-size: 2rem;
-        word-spacing: normal;
     }
 
     .cly-hero-content p {
@@ -407,14 +382,31 @@ body {
     }
 }
 
-/* About Us Section*/
-.cly-about-us {
-    padding: 80px 80px;
+/* About Us & Services Page Titles */
+.cly-page-title-section {
+    text-align: center;
+    padding: 40px 20px;
     background-color: #fff;
 }
 
+.cly-page-title-section h2 {
+    font-size: 2.5rem;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    color: #525252;
+}
+
+.cly-page-title-section p {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* About Us Section*/
 .cly-about-us-section {
-    padding: 80px 80px;
+    padding: 80px;
     background-color: #ffffff;
 }
 
@@ -435,20 +427,6 @@ body {
     object-fit: cover;
 }
 
-.cly-about-us-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: rgb(87, 87, 87);
-    text-decoration: none;
-    border-radius: 1px;
-}
-
-.cly-about-us-btn:hover {
-    background-color: #c7c7c7;
-    color: rgb(87, 87, 87);
-}
-
 .cly-about-us-content {
     flex: 1;
 }
@@ -466,18 +444,31 @@ body {
     line-height: 1.8;
 }
 
+.cly-about-us-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: rgb(87, 87, 87);
+    text-decoration: none;
+    border-radius: 1px;
+}
+
+.cly-about-us-btn:hover {
+    background-color: #c7c7c7;
+    color: rgb(87, 87, 87);
+}
+
+
 @media (max-width: 768px) {
+    .cly-about-us-section {
+        padding: 40px;
+        text-align: center;
+    }
+
     .cly-about-us-flex {
         flex-direction: column;
     }
 
-    .cly-about-us-section {
-        padding: 40px 40px;
-        background-color: #ffffff;
-        text-align: center;
-    }
-
-    .cly-about-us-content,
     .cly-about-us-content h2 {
         text-align: center;
     }
@@ -489,116 +480,52 @@ body {
     }
 }
 
-/* --- Services Section --- */
-.cly-services {
-    background-color: #d6d6d645;
-    padding: 20px 10px;
+
+/* Services & Values Section */
+.cly-services-values-section {
+    background-color: #f7f7f7;
+    padding: 60px 20px;
     text-align: center;
-    max-width: 1500px; /* constrain to container width */
-    margin: 0 auto;
 }
 
-.cly-services h2 {
+.cly-services-values-section h2 {
     font-size: 2.5rem;
     letter-spacing: -2px;
     margin-bottom: 50px;
     color: #525252;
 }
 
-.cly-services-grid {
+.cly-services-values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 100%;
-    
-}
-
-.cly-service-card {
-    background-color: #fff;
-    padding: 40px;
-    text-align: left;
-    transition: transform 0.3s;
-}
-
-.cly-service-card h3 {
-    font-size: 1.5rem;
-    color: #525252;
-    margin-bottom: 10px;
-}
-
-.cly-service-card p {
-    color: #777;
-}
-
-/* What we stand for Section */
-.cly-values-section {
-    background-color: #d6d6d645;
-    padding: 20px 10px;
-    text-align: center;
-    max-width: 1500px; /* constrain to container width */
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.cly-values-section h2 {
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    margin-bottom: 50px;
-    color: #525252;
-}
-
-.cly-values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 30px;
-}
-
-/* Desktop: show exactly 4 cards in one row on wide screens */
-@media (min-width: 992px) {
-    .cly-values-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.cly-value-card {
+.cly-card {
     background-color: #fff;
     padding: 40px;
     text-align: left;
     transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-.cly-value-card h3 {
+.cly-card h3 {
     font-size: 1.5rem;
     color: #525252;
     margin-bottom: 10px;
 }
 
-.cly-value-card p {
+.cly-card p {
     color: #777;
     line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-    .cly-services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cly-values-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Contact Us Section Styling */
-.cly-contact-us {
-    padding: 80px 80px;
-    background-color: #ffffff;
-}
-
-.cly-contact-content h2 {
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    text-align: left;
-    color: #525252;
-    margin-bottom: 20px;
+/* Contact Section */
+.cly-contact-section-home {
+    padding: 80px;
+    background-color: #fff;
 }
 
 .cly-contact-flex {
@@ -647,29 +574,22 @@ body {
 }
 
 @media (max-width: 768px) {
-    .cly-contact-us {
-        padding: 40px 40px;
+    .cly-contact-section-home {
+        padding: 40px;
         text-align: center;
     }
 
     .cly-contact-flex {
         flex-direction: column;
     }
-
-    .cly-contact-content {
-        text-align: center;
-    }
 }
 
-/* Footer section */
+/* Footer */
 .cly-footer {
     background: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    padding: 20px 0;
 }
 
 .cly-footer-container {
@@ -683,8 +603,8 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 0px 80px;
+    gap: 20px;
+    padding: 0 80px;
 }
 
 .cly-footer-logo img {
@@ -692,14 +612,12 @@ body {
 }
 
 .cly-footer-text {
-    padding: 10px 0;
     font-size: 0.9rem;
     color: #b4b4b4;
 }
 
 .cly-footer p {
     margin: 0;
-    font-size: 0.9rem;
 }
 
 .cly-footer a {
@@ -730,119 +648,7 @@ body {
     }
 }
 
-/* About Us */
-.cly-about-us-container {
-    align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 80px 10px;
-    color: #525252;
-}
-.cly-about-us-div {
-    position: relative;
-    font-size: 1rem;
-    color: var(--white-text);
-    text-align: center;
-    align-items: center !important;
-    padding: 0 20px;
-}
-.cly-about-us-div h2 {
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    margin-bottom: 50px;
-    color: #525252;
-}
-.cly-about-us-div p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #666;
-    line-height: 1.6;
-}
-/* Services */
-.cly-container-services {
-    align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 10px;
-    color: #525252;
-}
-.cly-services-div {
-    position: relative;
-    font-size: 1rem;
-    color: var(--white-text);
-    text-align: center;
-    padding: 0 10px;
-}
-.cly-services-div h2 {
-    font-size: 2.5rem;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
-    color: #525252;
-}
-.cly-services-div p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #666;
-    line-height: 1.6;
-}
-
-.cly-services {
-    background-color: #d6d6d645;
-    padding: 20px 10px;
-    text-align: center;
-    max-width: 1500px; /* constrain to container width */
-    margin: 0 auto;
-}
-
-.cly-container-services-flex h3 {
-    font-size: 2.5rem;
-    letter-spacing: 0px;
-    margin-bottom: 50px;
-    color: #525252;
-}
-
-.cly-container-services-flex {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 30px;
-}
-
-/* Desktop: show exactly 4 cards in one row on wide screens */
-@media (min-width: 992px) {
-    .cly-container-services-flex{
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.cly-services-card{
-    background-color: #fff;
-    padding: 40px;
-    text-align: left;
-    transition: transform 0.3s;
-}
-
-.cly-services-card h3 {
-    font-size: 1.5rem;
-    color: #525252;
-    margin-bottom: 10px;
-}
-
-.cly-services-card p {
-    color: #777;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .cly-container-services-flex {
-        grid-template-columns: 1fr;
-    }
-
-    .cly-services-card {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Contact Us */
+/* Contact Page */
 .cly-contact-hero {
     position: relative;
     width: 100%;
@@ -865,12 +671,11 @@ body {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.7);
-    transition: transform 0.5s ease;
 }
 
-.cly-contact-content {
+.cly-contact-hero .cly-contact-content {
     position: relative;
-    color: var(--white-text);
+    color: #fff;
     text-align: center;
     top: 50%;
     left: 50%;
@@ -878,15 +683,15 @@ body {
     padding: 0 20px;
 }
 
-.cly-contact-content h1 {
+.cly-contact-hero .cly-contact-content h1 {
     font-size: clamp(2.5em, 8vw, 4em);
-    color: #0091cf;
+    color: #fff;
     margin: 0 0 20px;
     font-weight: 700;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-.cly-contact-content p {
+.cly-contact-hero .cly-contact-content p {
     font-size: clamp(1.2em, 4vw, 1.5em);
     margin: 0 0 30px;
     font-weight: 300;
@@ -900,6 +705,7 @@ body {
     align-items: flex-start;
     gap: 40px;
     flex-wrap: wrap;
+    background-color: #fff;
 }
 
 .cly-contact-info,
@@ -924,8 +730,6 @@ body {
     color: #525252;
     font-size: 2em;
     margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
 }
 
 .cly-contact-info p {
@@ -952,15 +756,8 @@ body {
     text-decoration: underline;
 }
 
-.cly-contact-info .fas,
-.cly-contact-info .fab {
+.cly-contact-info .fas {
     margin-right: 10px;
-    color: #525252;
-}
-
-.cly-contact-form {
-    display: flex;
-    flex-direction: column;
 }
 
 .cly-form-group {
@@ -970,7 +767,7 @@ body {
 .cly-form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #0091cf;
+    color: #525252;
     font-weight: bold;
 }
 
@@ -979,7 +776,7 @@ body {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 0px;
+    border-radius: 3px;
     box-sizing: border-box;
     font-size: 1rem;
 }
@@ -991,57 +788,47 @@ body {
 .cly-form-btn {
     display: inline-block;
     padding: 10px 20px;
-    color: #555;
+    color: #fff;
+    background-color: #525252;
     text-decoration: none;
     border-radius: 3px;
-    border: solid 1px #555;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.cly-form-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 0px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    background-color: #fff;
-    color: #555;
 }
 
 .cly-form-btn:hover {
     background-color: #0091cf;
-    color: #fff;
-    border: solid 1px #0091cf;
 }
 
 /* Thank You Page */
-.cly-thank-you {
-    background-color: #c6c6c6;
+.cly-thank-you-section {
     text-align: center;
     padding: 100px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
-.cly-thank-you-section {
-    background-color: #f3f3f3;
-    color: #555;
-    padding: 20px 20px;
-    border-radius: 8px;
+.cly-thank-you-section h1 {
+    font-size: 2.5rem;
+    color: #525252;
+    margin-bottom: 20px;
 }
 
-.cly-thank-button {
+.cly-thank-you-section p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.cly-thank-you-btn {
     display: inline-block;
-    padding: 5px 10px;
-    background-color: #333;
+    padding: 10px 20px;
+    background-color: #525252;
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-.cly-thank-button:hover {
-    background-color: #555;
+
+.cly-thank-you-btn:hover {
+    background-color: #0091cf;
 }

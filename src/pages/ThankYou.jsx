@@ -1,15 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function ThankYou(){
-  return (
-    <>
-    <section className="cly-thank-you">
-      <div className="cly-thank-you-section">
-        <h1 >Thank You!</h1>
-        <p>Your message has been successfully sent. We will get back to you shortly.</p>
-        <a href="/" className="cly-thank-button">Return to Home</a>
-      </div>
-    </section>
-    </>
-  )
-}
+const ThankYou = () => {
+    return (
+        <section className="cly-thank-you-section">
+            <h1>Thank You!</h1>
+            <p>Your message has been sent successfully. We will get back to you shortly.</p>
+            <Link to="/" className="cly-thank-you-btn">Go to Homepage</Link>
+        </section>
+    );
+};
+
+export default ThankYou;
