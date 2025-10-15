@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import { Link } from 'react-router-dom';
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 
 const ForgotPassword = () => {
     const [loginIdentifier, setLoginIdentifier] = useState('');
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +17,11 @@ const ForgotPassword = () => {
         setLoading(true);
 
         try {
+            const app = initializeFirebase();
+            const auth = getAuth(app);
+            const db = getFirestore(app);
             let email;
+
             if (loginIdentifier.includes('@')) {
                 email = loginIdentifier;
             } else {

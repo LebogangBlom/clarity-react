@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal';
 import Loader from '../components/Loader';
@@ -23,8 +23,6 @@ const Register = () => {
     const [loading, setLoading] = useState(false);
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
     const navigate = useNavigate();
-    const auth = getAuth(app);
-    const db = getFirestore(app);
 
     const validatePassword = (password) => {
         const checks = {
@@ -67,6 +65,10 @@ const Register = () => {
 
         setLoading(true);
         try {
+            const app = initializeFirebase();
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+
             const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
             const user = userCredential.user;
 

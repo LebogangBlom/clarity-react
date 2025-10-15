@@ -1,33 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 
 const AdminDashboard = () => {
     const [clients, setClients] = useState([]);
     const [content, setContent] = useState({});
-    const db = getFirestore(app);
+    const [firebaseApp, setFirebaseApp] = useState(null);
 
     useEffect(() => {
-        const fetchClients = async () => {
-            const clientsCollection = collection(db, "clients");
-            const clientsSnapshot = await getDocs(clientsCollection);
-            const clientsData = clientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setClients(clientsData);
+        const initFirebase = async () => {
+            const app = await initializeFirebase();
+            setFirebaseApp(app);
         };
+        initFirebase();
+    }, []);
 
-        const fetchContent = async () => {
-            const contentCollection = collection(db, "content");
-            const contentSnapshot = await getDocs(contentCollection);
-            const contentData = contentSnapshot.docs.reduce((acc, doc) => {
-                acc[doc.id] = doc.data().value;
-                return acc;
-            }, {});
-            setContent(contentData);
-        };
+    useEffect(() => {
+        if (firebaseApp) {
+            const db = getFirestore(firebaseApp);
 
-        fetchClients();
-        fetchContent();
-    }, [db]);
+            const fetchClients = async () => {
+                const clientsCollection = collection(db, "clients");
+                const clientsSnapshot = await getDocs(clientsCollection);
+                const clientsData = clientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setClients(clientsData);
+            };
+
+            const fetchContent = async () => {
+                const contentCollection = collection(db, "content");
+                const contentSnapshot = await getDocs(contentCollection);
+                const contentData = contentSnapshot.docs.reduce((acc, doc) => {
+                    acc[doc.id] = doc.data().value;
+                    return acc;
+                }, {});
+                setContent(contentData);
+            };
+
+            fetchClients();
+            fetchContent();
+        }
+    }, [firebaseApp]);
 
     const handleContentChange = (e) => {
         const { name, value } = e.target;
@@ -36,12 +48,17 @@ const AdminDashboard = () => {
 
     const handleContentUpdate = async (e) => {
         e.preventDefault();
+        const db = getFirestore(firebaseApp);
         for (const key in content) {
             const docRef = doc(db, "content", key);
             await updateDoc(docRef, { value: content[key] });
         }
         alert('Content updated successfully!');
     };
+
+    if (!firebaseApp) {
+        return <div class='suspense-loading'>Loading...</div>;
+    }
 
     return (
         <div className="dashboard-container">

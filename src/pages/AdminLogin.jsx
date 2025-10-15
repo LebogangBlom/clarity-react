@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
@@ -8,16 +8,17 @@ const AdminLogin = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const auth = getAuth(app);
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setError(null); // Clear previous errors
+        setError(null);
         try {
+            const app = initializeFirebase();
+            const auth = getAuth(app);
             await signInWithEmailAndPassword(auth, email, password);
             navigate('/admin-dashboard');
         } catch (error) {
-            setError("Invalid email or password. Please try again."); // More user-friendly error
+            setError("Invalid email or password. Please try again.");
         }
     };
 

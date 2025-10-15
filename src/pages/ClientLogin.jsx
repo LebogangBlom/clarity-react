@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import { Link, useNavigate } from 'react-router-dom';
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 
 const ClientLogin = () => {
     const [formData, setFormData] = useState({ loginIdentifier: '', password: '' });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const auth = getAuth(app);
-    const db = getFirestore(app);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,8 +20,11 @@ const ClientLogin = () => {
         setLoading(true);
 
         try {
+            const app = initializeFirebase();
+            const auth = getAuth(app);
+            const db = getFirestore(app);
             let email;
-            // Check if loginIdentifier is an email or unique number
+
             if (formData.loginIdentifier.includes('@')) {
                 email = formData.loginIdentifier;
             } else {
@@ -47,7 +48,7 @@ const ClientLogin = () => {
     };
 
     return (
-        <div className="cly-login-container"> 
+        <div className="cly-login-container">
             <div className="cly-login-form">
                 <h2>Client Login</h2>
                 {error && <p className="cly-error-message">{error}</p>}

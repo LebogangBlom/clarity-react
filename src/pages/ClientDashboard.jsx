@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { app } from '../firebase/config';
+import { initializeFirebase } from '../firebase/config';
 
 const ClientDashboard = () => {
     const [clientData, setClientData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
 
     useEffect(() => {
+        const app = initializeFirebase();
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
         const fetchClientData = async () => {
             const currentUser = auth.currentUser;
+
             if (currentUser) {
                 try {
                     const docRef = doc(db, "clients", currentUser.uid);
@@ -30,7 +33,7 @@ const ClientDashboard = () => {
         };
 
         fetchClientData();
-    }, [auth.currentUser, db]);
+    }, []);
 
     return (
         <div className="dashboard-container">
